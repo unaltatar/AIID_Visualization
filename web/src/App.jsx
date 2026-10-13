@@ -1,7 +1,10 @@
 import './App.css'
+import { DomainBreakdownChart } from './components/DomainBreakdownChart'
+import { GeographyChart } from './components/GeographyChart'
 import { IncidentTable } from './components/IncidentTable'
 import { KpiStrip } from './components/KpiStrip'
-import { RiskDomainChart } from './components/RiskDomainChart'
+import { RiskDomainSection } from './components/RiskDomainSection'
+import { TopOrganizationsSection } from './components/TopOrganizationsSection'
 import { TrendChart } from './components/TrendChart'
 import { WhatsNewFeed } from './components/WhatsNewFeed'
 import { useAiidData } from './lib/useAiidData'
@@ -29,7 +32,10 @@ function App() {
         <>
           <KpiStrip meta={meta} newCount={whatsNew.newIncidents.length} />
           <TrendChart incidents={incidents} />
-          <RiskDomainChart incidents={incidents} coveragePct={meta.coverage.riskDomain} />
+          <RiskDomainSection incidents={incidents} coveragePct={meta.coverage.riskDomain} />
+          <DomainBreakdownChart incidents={incidents} />
+          <TopOrganizationsSection incidents={incidents} />
+          <GeographyChart incidents={incidents} coveragePct={meta.coverage.locationRegion} />
           <WhatsNewFeed whatsNew={whatsNew} />
           <IncidentTable incidents={incidents} />
         </>
