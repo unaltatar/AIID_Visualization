@@ -156,3 +156,66 @@ details > summary {
   font-size: 0.85rem;
   margin-top: 0.75rem;
 }
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.chart-header h2 {
+  margin: 0;
+}
+
+.segmented {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.segmented button {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border: none;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.segmented button + button {
+  border-left: 1px solid var(--border);
+}
+
+.segmented button.active {
+  background: var(--series-1);
+  color: #fff;
+}
+
+.subdomain-chart {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--gridline);
+}
+
+.subdomain-chart h3 {
+  font-size: 0.95rem;
+  margin-top: 0;
+  color: var(--text-secondary);
+}
+
+.top-orgs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.top-entities-chart h3 {
+  font-size: 0.95rem;
+  margin-top: 0;
+  color: var(--text-secondary);
+}

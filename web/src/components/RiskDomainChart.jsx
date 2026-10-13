@@ -4,7 +4,7 @@ import { countByRiskDomain } from '../lib/aggregate'
 import { chartTheme } from '../lib/theme'
 import { useColorScheme } from '../lib/useColorScheme'
 
-export function RiskDomainChart({ incidents, coveragePct }) {
+export function RiskDomainChart({ incidents, onSelectDomain }) {
   const scheme = useColorScheme()
   const rows = useMemo(() => countByRiskDomain(incidents), [incidents])
 
@@ -41,14 +41,19 @@ export function RiskDomainChart({ incidents, coveragePct }) {
     }
   }, [rows, scheme])
 
+  const onEvents = useMemo(
+    () => ({
+      click: (params) => {
+        const row = rows[params.dataIndex]
+        if (row && !row.isGap) onSelectDomain(row.domain)
+      },
+    }),
+    [rows, onSelectDomain],
+  )
+
   return (
-    <section className="chart-card">
-      <h2>Incidents by risk domain</h2>
-      <p className="chart-note">
-        MIT risk taxonomy, {coveragePct}% of incidents classified. "Not classified" incidents have no MIT risk
-        domain on record, it is a data gap rather than a category.
-      </p>
-      <ReactECharts option={option} style={{ height: 320 }} notMerge />
+    <div className="risk-domain-chart">
+      <ReactECharts option={option} onEvents={onEvents} style={{ height: 320 }} notMerge />
       <details>
         <summary>View as table</summary>
         <table className="data-table">
@@ -68,6 +73,6 @@ export function RiskDomainChart({ incidents, coveragePct }) {
           </tbody>
         </table>
       </details>
-    </section>
+    </div>
   )
 }

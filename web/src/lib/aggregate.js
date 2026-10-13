@@ -32,3 +32,45 @@ export function countByRiskDomain(incidents) {
   }
   return ranked
 }
+
+export function countBySubdomain(incidents, domain) {
+  const counts = new Map()
+  for (const incident of incidents) {
+    if (incident.riskDomain !== domain) continue
+    const subdomain = incident.riskSubdomain ?? 'Not specified'
+    counts.set(subdomain, (counts.get(subdomain) ?? 0) + 1)
+  }
+  return [...counts.entries()].sort(([, a], [, b]) => b - a).map(([subdomain, count]) => ({ subdomain, count }))
+}
+
+export function countByDomainAndField(incidents, field, values) {
+  const byDomain = new Map()
+  for (const incident of incidents) {
+    const domain = incident.riskDomain
+    const value = incident[field]
+    if (!domain || !value) continue
+    if (!byDomain.has(domain)) byDomain.set(domain, new Map())
+    const counts = byDomain.get(domain)
+    counts.set(value, (counts.get(value) ?? 0) + 1)
+  }
+
+  const domains = [...byDomain.keys()].sort((a, b) => {
+    const totalA = [...byDomain.get(a).values()].reduce((sum, n) => sum + n, 0)
+    const totalB = [...byDomain.get(b).values()].reduce((sum, n) => sum + n, 0)
+    return totalB - totalA
+  })
+
+  return domains.map((domain) => {
+    const counts = byDomain.get(domain)
+    return { domain, values: values.map((value) => counts.get(value) ?? 0) }
+  })
+}
+
+export function countByRegion(incidents) {
+  const counts = new Map()
+  for (const incident of incidents) {
+    if (!incident.locationRegion) continue
+    counts.set(incident.locationRegion, (counts.get(incident.locationRegion) ?? 0) + 1)
+  }
+  return [...counts.entries()].sort(([, a], [, b]) => b - a).map(([region, count]) => ({ region, count }))
+}
