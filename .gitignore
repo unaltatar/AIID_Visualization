@@ -1,0 +1,12 @@
+node_modules/
+web/dist/
+
+# Per-developer Claude Code preferences, not shared project config.
+.claude/settings.local.json
+
+# Raw weekly snapshot downloads: large, re-fetched by scripts/fetch-snapshot.mjs, not meant to live in git history.
+docs/*.xlsx
+
+.env
+.env.*
+!.env.example
