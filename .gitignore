@@ -1,8 +1,14 @@
 node_modules/
 web/dist/
 
+# Copied from data/ by web/scripts/copy-data.mjs on dev/build, data/ stays the source of truth.
+web/public/data/
+
 # Per-developer Claude Code preferences, not shared project config.
 .claude/settings.local.json
+
+# Created by the new-feature skill's worktree workflow, never meant to be committed.
+.claude/worktrees/
 
 # Raw weekly snapshot downloads: large, re-fetched by scripts/fetch-snapshot.mjs, not meant to live in git history.
 docs/*.xlsx
