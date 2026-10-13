@@ -22,9 +22,11 @@ Dashboard that visualizes the AI Incident Database (AIID): incident trends, cate
 - `npm --prefix web run dev`: local dev server.
 - `npm --prefix web run build`: production build (also the check run by CI before a Pages deploy).
 - `npm --prefix web run lint`: oxlint.
+- `npm run update-data`: run the data pipeline locally (fetch the latest AIID snapshot, transform it, diff it against what's in `data/`).
+- `npm test`: unit tests for `scripts/` (`node --test`).
 
 ## Deployment
 
 GitHub Pages, built by `.github/workflows/deploy.yml` on every push to `main`. The Pages source in the repo's GitHub settings must be set to "GitHub Actions" (one-time manual setup, not something a workflow can do).
 
-`.github/workflows/update-data.yml` (added alongside the data pipeline) refreshes `data/` on a weekly schedule; that commit is what triggers the next deploy.
+`.github/workflows/update-data.yml` refreshes `data/` on a weekly schedule. A push made with the default `GITHUB_TOKEN` does not trigger other workflows, so it cannot just rely on its commit to fire `deploy.yml`; instead it calls `deploy.yml` directly as a reusable workflow (`workflow_call`) once it has committed a change. `deploy.yml` keeps its own `push`/`workflow_dispatch` triggers for ordinary code changes.

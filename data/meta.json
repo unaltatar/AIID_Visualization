@@ -1,0 +1,17 @@
+{
+  "totalIncidents": 1734,
+  "dateRange": {
+    "min": "1983-09-26 00:00:00",
+    "max": "2026-10-03 00:00:00"
+  },
+  "lastFetched": "2026-10-13T18:35:53.802Z",
+  "sourceFileName": "AIID_Excel_Export-20261012.xlsx",
+  "coverage": {
+    "riskDomain": 86.3,
+    "responsibleEntity": 86.3,
+    "intent": 86.3,
+    "timing": 86.3,
+    "locationRegion": 11.5,
+    "autonomyLevel": 11.5
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "aiid-visualization-pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update-data": "node scripts/fetch-snapshot.mjs && node scripts/transform.mjs && node scripts/diff-whats-new.mjs",
+    "test": "node --test scripts"
+  },
+  "dependencies": {
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}

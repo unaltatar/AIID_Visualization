@@ -6,6 +6,7 @@ web/dist/
 
 # Raw weekly snapshot downloads: large, re-fetched by scripts/fetch-snapshot.mjs, not meant to live in git history.
 docs/*.xlsx
+.cache/
 
 .env
 .env.*
