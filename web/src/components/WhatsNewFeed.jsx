@@ -5,7 +5,7 @@ export function WhatsNewFeed({ whatsNew }) {
   const items = [...all].sort((a, b) => (b.date ?? '').localeCompare(a.date ?? '')).slice(0, FEED_LIMIT)
 
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="whats-new">
       <h2>New this week</h2>
       {all.length === 0 ? (
         <p className="chart-note">No new incidents since the last snapshot.</p>

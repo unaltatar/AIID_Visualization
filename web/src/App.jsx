@@ -1,4 +1,5 @@
 import './App.css'
+import { CoveragePanel } from './components/CoveragePanel'
 import { DomainBreakdownChart } from './components/DomainBreakdownChart'
 import { GeographyChart } from './components/GeographyChart'
 import { IncidentTable } from './components/IncidentTable'
@@ -8,6 +9,18 @@ import { TopOrganizationsSection } from './components/TopOrganizationsSection'
 import { TrendChart } from './components/TrendChart'
 import { WhatsNewFeed } from './components/WhatsNewFeed'
 import { useAiidData } from './lib/useAiidData'
+
+const SECTIONS = [
+  ['overview', 'Overview'],
+  ['trend', 'Trend'],
+  ['risk-domain', 'Risk domain'],
+  ['breakdown', 'Breakdown'],
+  ['organizations', 'Organizations'],
+  ['geography', 'Geography'],
+  ['whats-new', "What's new"],
+  ['browse', 'Browse'],
+  ['about', 'About this data'],
+]
 
 function App() {
   const { status, incidents, meta, whatsNew, error } = useAiidData()
@@ -23,6 +36,15 @@ function App() {
           </a>
           , refreshed weekly.
         </p>
+        {status === 'ready' && (
+          <nav className="section-nav">
+            {SECTIONS.map(([id, label]) => (
+              <a key={id} href={`#${id}`}>
+                {label}
+              </a>
+            ))}
+          </nav>
+        )}
       </header>
 
       {status === 'loading' && <p>Loading the latest snapshot...</p>}
@@ -38,6 +60,18 @@ function App() {
           <GeographyChart incidents={incidents} coveragePct={meta.coverage.locationRegion} />
           <WhatsNewFeed whatsNew={whatsNew} />
           <IncidentTable incidents={incidents} />
+          <CoveragePanel meta={meta} />
+          <footer className="app-footer">
+            Built from the{' '}
+            <a href="https://incidentdatabase.ai" target="_blank" rel="noreferrer">
+              AI Incident Database
+            </a>
+            , an independent project tracking real-world harms from AI systems.{' '}
+            <a href="https://github.com/unaltatar/AIID_Visualization" target="_blank" rel="noreferrer">
+              Source on GitHub
+            </a>
+            .
+          </footer>
         </>
       )}
     </main>

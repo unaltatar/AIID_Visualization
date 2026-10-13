@@ -11,7 +11,7 @@ export function KpiStrip({ meta, newCount }) {
   ]
 
   return (
-    <section className="kpi-strip">
+    <section className="kpi-strip" id="overview">
       {tiles.map((tile) => (
         <div className="kpi-tile" key={tile.label}>
           <span className="kpi-label">{tile.label}</span>

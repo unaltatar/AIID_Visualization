@@ -49,7 +49,7 @@ export function DomainBreakdownChart({ incidents }) {
   }, [rows, scheme, values])
 
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="breakdown">
       <div className="chart-header">
         <h2>Risk domain by {label.toLowerCase()}</h2>
         <div className="segmented">

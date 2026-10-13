@@ -39,7 +39,7 @@ export function GeographyChart({ incidents, coveragePct }) {
   }, [rows, scheme])
 
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="geography">
       <h2>Incidents by region</h2>
       <p className="chart-note">
         Location Region is recorded for {coveragePct}% of incidents. This shows only that tagged subset, not the
