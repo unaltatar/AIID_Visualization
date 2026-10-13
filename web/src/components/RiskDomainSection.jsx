@@ -8,7 +8,7 @@ export function RiskDomainSection({ incidents, coveragePct }) {
   const [selected, setSelected] = useState(() => domains[0]?.domain ?? null)
 
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="risk-domain">
       <h2>Incidents by risk domain</h2>
       <p className="chart-note">
         MIT risk taxonomy, {coveragePct}% of incidents classified. "Not classified" incidents have no MIT risk

@@ -2,7 +2,7 @@ import { TopEntitiesChart } from './TopEntitiesChart'
 
 export function TopOrganizationsSection({ incidents }) {
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="organizations">
       <h2>Most frequently named organizations</h2>
       <p className="chart-note">
         Counts how often a name appears in the deployer/developer fields, an incident can name several. Includes

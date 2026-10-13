@@ -42,7 +42,7 @@ export function TrendChart({ incidents }) {
   }, [rows, scheme])
 
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="trend">
       <h2>Incidents per year</h2>
       <ReactECharts option={option} style={{ height: 280 }} notMerge />
       <details>

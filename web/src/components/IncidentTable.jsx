@@ -1,10 +1,20 @@
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
+import { IncidentDetail } from './IncidentDetail'
 
 const PAGE_SIZE = 25
 
+function matchesSearch(incident, query) {
+  if (!query) return true
+  const haystack = `${incident.title ?? ''} ${incident.deployer ?? ''} ${incident.developer ?? ''}`.toLowerCase()
+  return haystack.includes(query)
+}
+
 export function IncidentTable({ incidents }) {
   const [domainFilter, setDomainFilter] = useState('all')
+  const [yearFilter, setYearFilter] = useState('all')
+  const [search, setSearch] = useState('')
   const [page, setPage] = useState(0)
+  const [expandedId, setExpandedId] = useState(null)
 
   const domains = useMemo(() => {
     const set = new Set()
@@ -14,32 +24,61 @@ export function IncidentTable({ incidents }) {
     return [...set].sort()
   }, [incidents])
 
+  const years = useMemo(() => {
+    const set = new Set()
+    for (const incident of incidents) {
+      if (incident.year) set.add(incident.year)
+    }
+    return [...set].sort().reverse()
+  }, [incidents])
+
   const filtered = useMemo(() => {
-    const rows = domainFilter === 'all' ? incidents : incidents.filter((incident) => incident.riskDomain === domainFilter)
-    return [...rows].sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
-  }, [incidents, domainFilter])
+    const query = search.trim().toLowerCase()
+    const rows = incidents.filter((incident) => {
+      if (domainFilter !== 'all' && incident.riskDomain !== domainFilter) return false
+      if (yearFilter !== 'all' && incident.year !== yearFilter) return false
+      return matchesSearch(incident, query)
+    })
+    return rows.sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''))
+  }, [incidents, domainFilter, yearFilter, search])
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
   const safePage = Math.min(page, pageCount - 1)
   const pageRows = filtered.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE)
 
+  function updateFilter(setter, value) {
+    setter(value)
+    setPage(0)
+  }
+
   return (
-    <section className="chart-card">
+    <section className="chart-card" id="browse">
       <h2>Browse incidents</h2>
       <div className="table-controls">
+        <input
+          type="search"
+          placeholder="Search title or organization..."
+          value={search}
+          onChange={(event) => updateFilter(setSearch, event.target.value)}
+        />
         <label>
           Risk domain
-          <select
-            value={domainFilter}
-            onChange={(event) => {
-              setDomainFilter(event.target.value)
-              setPage(0)
-            }}
-          >
-            <option value="all">All ({incidents.length})</option>
+          <select value={domainFilter} onChange={(event) => updateFilter(setDomainFilter, event.target.value)}>
+            <option value="all">All</option>
             {domains.map((domain) => (
               <option key={domain} value={domain}>
                 {domain}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Year
+          <select value={yearFilter} onChange={(event) => updateFilter(setYearFilter, event.target.value)}>
+            <option value="all">All</option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
               </option>
             ))}
           </select>
@@ -58,13 +97,25 @@ export function IncidentTable({ incidents }) {
         </thead>
         <tbody>
           {pageRows.map((incident) => (
-            <tr key={incident.id}>
-              <td>{incident.date?.slice(0, 10)}</td>
-              <td>{incident.title}</td>
-              <td>{incident.deployer}</td>
-              <td>{incident.riskDomain ?? 'Not classified'}</td>
-              <td className="num">{incident.reportCount}</td>
-            </tr>
+            <Fragment key={incident.id}>
+              <tr
+                className="incident-row"
+                onClick={() => setExpandedId(expandedId === incident.id ? null : incident.id)}
+              >
+                <td>{incident.date?.slice(0, 10)}</td>
+                <td>{incident.title}</td>
+                <td>{incident.deployer}</td>
+                <td>{incident.riskDomain ?? 'Not classified'}</td>
+                <td className="num">{incident.reportCount}</td>
+              </tr>
+              {expandedId === incident.id && (
+                <tr className="incident-row-detail">
+                  <td colSpan={5}>
+                    <IncidentDetail incident={incident} />
+                  </td>
+                </tr>
+              )}
+            </Fragment>
           ))}
         </tbody>
       </table>
