@@ -43,15 +43,18 @@ Observed value breakdown (for reference while building chart components):
 
 ## 3. Visualization catalog
 
-1. **KPI strip**: total incidents, total linked reports, incidents added since last snapshot, dataset date range, last-updated date.
-2. **Incidents over time**: yearly bar/line chart (the growth trend), with a secondary monthly view for the last 12-24 months.
-3. **Risk Domain breakdown**: donut or bar of the 7 top-level categories, clickable to drill into Risk Subdomain (sunburst or treemap).
-4. **Responsible Entity & Intent**: two small donuts, optionally combined into a stacked bar against Risk Domain (e.g. "Malicious Actors & Misuse" skews Human+Intentional, "AI safety/failures" skews AI+Unintentional).
-5. **Top organizations**: horizontal bar of most frequent deployers/developers, after name normalization.
-6. **Geography**: region-level bar chart from `Location Region`, plus an optional country-level map, both explicitly labeled as covering only ~12% of incidents.
-7. **What's new this week**: list of incidents newly added since the previous snapshot (title, date, deployer, Risk Domain, report count, link out), driven by `data/whats-new.json`. A second list covers incidents whose `Date Modified` changed.
-8. **Browsable incident table**: filterable by Risk Domain, year, Responsible Entity, Intent; opens a detail view per incident.
-9. **Data transparency panel**: restates the workbook's own Coverage Map (how much of the data each taxonomy actually covers), so partial-coverage charts aren't misread as complete.
+All items below are built and live. Status notes reflect decisions made during implementation that differ from the original sketch.
+
+1. **KPI strip**: incidents in the current selection, new this week, dataset date range, last-updated date. "Total incidents" was renamed to "Incidents shown" once the year filter (item 10) made the count variable.
+2. **Incidents over time**: yearly bar chart (the growth trend). No separate monthly view was built; the year-range filter covers the "zoom into a window" need instead.
+3. **Risk Domain breakdown**: single-hue horizontal bar of the 7 top-level categories plus a "Not classified" gap bar, not a donut. Clicking a bar shows that domain's Risk Subdomain breakdown below it (single-hue bar again, not a sunburst): the dataviz skill's own rule is that a ranked bar of named categories should be one color, a sunburst/treemap with 21 subdomain hues would have broken the 8-color categorical ceiling.
+4. **Responsible Entity & Intent**: one stacked bar ("Risk domain by responsible entity / intent") with a toggle between the two dimensions, not two separate donuts. This is a genuine 3-way identity split (AI/Human/Other, or Intentional/Unintentional/Other), so it gets 3 real categorical colors with a legend, unlike the single-hue ranked bars above.
+5. **Top organizations**: two horizontal bars (top deployers, top developers), each splitting the comma-joined deployer/developer cells into individual names first (790 and 860 of 1,734 incidents had multi-name lists that would otherwise count as one lumped string). One alias fixed so far: "Openai" to "OpenAI" (`web/src/lib/orgNames.js`).
+6. **Geography**: region-level bar chart from `Location Region` only. The optional country-level map was decided against, see §9.
+7. **What's new this week**: list of up to 20 most-recent new incidents (title, date, deployer, Risk Domain, report count), driven by `data/whats-new.json`, plus a count of incidents whose `Date Modified` changed. Capped at 20 after the first real run showed the uncapped list rendering all 1,734 incidents (no prior snapshot existed yet, so everything counted as "new").
+8. **Browsable incident table**: filterable by Risk Domain and free-text search (title/deployer/developer), with the year filter coming from item 10 instead of a separate per-table control. Click a row to expand a detail panel with every recorded field and a link to the incident's page on AIID.
+9. **Data transparency panel** ("About this data"): coverage percentage per taxonomy field, computed live over the current year-filtered selection rather than the static whole-database numbers in `meta.json`, so it agrees with whatever the charts above are showing.
+10. **Year-range filter** (added after Phase 3, not in the original plan): a dual-handle slider above everything, filtering every chart and the incident table to a year range. Added on direct feedback once the full dashboard was in front of real data: once there were 8+ sections, the ability to zoom into a period (e.g. "just 2023 onward") turned out to matter more than a separate monthly trend view. Deliberately excluded from scope: the What's New feed (it answers "what changed recently," not a historical window) and the KPI strip's "Tracked since"/"Last updated" tiles (facts about the dataset itself, not the current view).
 
 
 
@@ -108,10 +111,16 @@ data/
   meta.json
   whats-new.json
 web/                     React + Vite app, its own package.json
-  src/ 
-    components/          KpiStrip, TrendChart, RiskDomainChart, EntityIntentCharts,
-                          TopOrgsChart, GeographyChart, WhatsNewFeed, IncidentTable
-    lib/                 data loading + taxonomy color mapping
+  scripts/
+    copy-data.mjs        prebuild/predev hook, copies data/*.json into public/data/
+  src/
+    components/          KpiStrip, YearRangeFilter, TrendChart, RiskDomainSection,
+                          RiskDomainChart, SubdomainChart, DomainBreakdownChart,
+                          TopOrganizationsSection, TopEntitiesChart, GeographyChart,
+                          WhatsNewFeed, IncidentTable, IncidentDetail, CoveragePanel
+    lib/                 useAiidData (fetch), aggregate (chart math), orgNames
+                          (deployer/developer splitting + aliases), theme
+                          (chart color tokens), useColorScheme (dark mode)
   public/
 docs/
   plan.md                this file
@@ -121,15 +130,18 @@ docs/
 
 ## 8. Phased build order
 
-- **Phase 1 (MVP)**: data pipeline (done: fetch, transform, diff, weekly workflow), KPI strip, incidents-over-time chart, Risk Domain breakdown, What's New feed, basic incident table.
-- **Phase 2**: Risk Domain to Subdomain drill-down, Entity/Intent cross-tabs, top organizations (with name normalization), geography charts with explicit coverage caveats.
-- **Phase 3**: incident detail view, richer table filtering/search, data transparency panel, visual polish.
+- **Phase 1 (MVP), done**: data pipeline (fetch, transform, diff, weekly workflow), KPI strip, incidents-over-time chart, Risk Domain breakdown, What's New feed, basic incident table.
+- **Phase 2, done**: Risk Domain to Subdomain drill-down (click-through, not a sunburst), Entity/Intent cross-tab (stacked bar with a toggle), top organizations (deployer/developer name splitting + alias fixes), geography bar chart with explicit coverage caveat.
+- **Phase 3, done**: incident detail view (expandable table row, links out to AIID), table search + Risk Domain filter, data transparency panel ("About this data"), section anchor nav, footer.
+- **Phase 4 (unplanned, added on feedback)**: global year-range filter scoping every chart and the table, built after seeing the full dashboard against real data made "zoom into a period" the obvious next need.
 
 
 
-## 9. Open questions for later
+## 9. Decisions and open questions
 
-- Exact alias list for normalizing deployer/developer names (OpenAI, Google, Meta, etc.): build iteratively as duplicates are noticed.
-- Whether the country-level map is worth building at ~12% coverage, or whether the region bar chart alone is enough for v1.
+- **Resolved: no country-level map.** At ~11.5% Location Region coverage, a country choropleth would mostly render gaps, and it would need a map/GeoJSON dependency for little payoff. The region bar chart alone covers this for now; its caption says so explicitly.
+- **Alias list for deployer/developer names**: only "Openai" to "OpenAI" fixed so far (`web/src/lib/orgNames.js`), the only visible casing bug in the top-15 rankings for both fields. Still open: extend as more duplicates are noticed, this was deliberately left as a small, targeted list rather than an attempt at exhaustive coverage.
 - `data/incidents.json` is currently about 2.1MB uncompressed. Fine for a single fetch-on-load today; revisit (e.g. split full descriptions out of the fields used for charts) if it keeps growing or load time becomes noticeable.
+- ECharts is imported in full, producing a ~1.37MB JS bundle (gzip ~450KB). Works fine, but `echarts/core` plus explicit chart-type imports would shrink it; not done yet since it is a pure optimization with no functional benefit.
+- The `update-data.yml` weekly schedule has not fired on its real cron trigger yet (not enough time has passed since it was added); every data refresh seen so far was a manual `npm run update-data` run during development. Worth a spot-check after the first real Tuesday run.
 
