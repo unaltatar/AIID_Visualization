@@ -1,3 +1,6 @@
+import { useMemo } from 'react'
+import { computeCoverage } from '../lib/aggregate'
+
 const TAXONOMY_LABELS = {
   riskDomain: 'Risk domain',
   responsibleEntity: 'Responsible entity',
@@ -11,15 +14,17 @@ function formatDate(isoString) {
   return new Date(isoString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
-export function CoveragePanel({ meta }) {
+export function CoveragePanel({ incidents, meta }) {
+  const coverage = useMemo(() => computeCoverage(incidents), [incidents])
+
   return (
     <section className="chart-card" id="about">
       <h2>About this data</h2>
       <p className="chart-note">
         AIID classifies incidents against several taxonomies, and not every incident is covered by all of them. The
-        percentages below are how much of the {meta.totalIncidents.toLocaleString('en-US')} incidents in this
-        snapshot carry each field. A chart built on a sparsely covered field is reading a smaller sample than the
-        full database, not the whole thing.
+        percentages below are how much of the {incidents.length.toLocaleString('en-US')} incidents in the current
+        selection carry each field. A chart built on a sparsely covered field is reading a smaller sample than the
+        selection, not the whole thing.
       </p>
       <table className="data-table">
         <thead>
@@ -29,7 +34,7 @@ export function CoveragePanel({ meta }) {
           </tr>
         </thead>
         <tbody>
-          {Object.entries(meta.coverage).map(([field, pct]) => (
+          {Object.entries(coverage).map(([field, pct]) => (
             <tr key={field}>
               <td>{TAXONOMY_LABELS[field] ?? field}</td>
               <td className="num">{pct}%</td>

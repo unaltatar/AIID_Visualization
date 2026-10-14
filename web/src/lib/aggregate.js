@@ -74,3 +74,22 @@ export function countByRegion(incidents) {
   }
   return [...counts.entries()].sort(([, a], [, b]) => b - a).map(([region, count]) => ({ region, count }))
 }
+
+export function filterByYearRange(incidents, from, to) {
+  return incidents.filter((incident) => {
+    const year = Number(incident.year)
+    return year >= from && year <= to
+  })
+}
+
+const COVERAGE_FIELDS = ['riskDomain', 'responsibleEntity', 'intent', 'timing', 'locationRegion', 'autonomyLevel']
+
+export function computeCoverage(incidents) {
+  const total = incidents.length
+  const coverage = {}
+  for (const field of COVERAGE_FIELDS) {
+    coverage[field] =
+      total === 0 ? 0 : Math.round((incidents.filter((incident) => incident[field] != null).length / total) * 1000) / 10
+  }
+  return coverage
+}

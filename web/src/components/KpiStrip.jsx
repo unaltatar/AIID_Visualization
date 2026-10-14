@@ -2,9 +2,9 @@ function formatDate(isoString) {
   return new Date(isoString).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
-export function KpiStrip({ meta, newCount }) {
+export function KpiStrip({ meta, filteredCount, newCount }) {
   const tiles = [
-    { label: 'Total incidents', value: meta.totalIncidents.toLocaleString('en-US') },
+    { label: 'Incidents shown', value: filteredCount.toLocaleString('en-US') },
     { label: 'New this week', value: newCount.toLocaleString('en-US') },
     { label: 'Tracked since', value: meta.dateRange.min?.slice(0, 4) ?? 'unknown' },
     { label: 'Last updated', value: formatDate(meta.lastFetched) },
