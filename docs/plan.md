@@ -10,13 +10,15 @@ AIID publishes a weekly Excel export at `https://incidentdatabase.ai/research/sn
 
 ### Workbook structure (confirmed from the 2026-10-12 export)
 
-| Sheet | Rows | Notes |
-|---|---|---|
-| Incidents | 1,734 | Main table. Row 1 = title, row 2 = taxonomy group headers, row 3 = real column names, row 4+ = data. 59 columns. |
-| Reports | 7,920 | News/source reports, link back to incidents via report linkage, not a direct foreign key column in this export. |
-| Entities | 7,465 | ID to display name lookup for deployers/developers/victims. |
-| Data Dictionary | 60 | Column name, taxonomy group, source, fill rate, description. Worth reusing verbatim for an in-app "about this data" panel. |
-| Coverage Map | 7 | How many incidents are covered by which combination of taxonomies (MIT, GMF, CSETv1). |
+
+| Sheet           | Rows  | Notes                                                                                                                      |
+| --------------- | ----- | -------------------------------------------------------------------------------------------------------------------------- |
+| Incidents       | 1,734 | Main table. Row 1 = title, row 2 = taxonomy group headers, row 3 = real column names, row 4+ = data. 59 columns.           |
+| Reports         | 7,920 | News/source reports, link back to incidents via report linkage, not a direct foreign key column in this export.            |
+| Entities        | 7,465 | ID to display name lookup for deployers/developers/victims.                                                                |
+| Data Dictionary | 60    | Column name, taxonomy group, source, fill rate, description. Worth reusing verbatim for an in-app "about this data" panel. |
+| Coverage Map    | 7     | How many incidents are covered by which combination of taxonomies (MIT, GMF, CSETv1).                                      |
+
 
 A blank cell in this sheet comes through as an empty string, not a missing value, once read with `sheet_to_json({header: 1, raw: false})`. `transform.mjs` normalizes `""` to `null` before computing anything; skip that step and every coverage percentage reads as 100%.
 
@@ -37,7 +39,7 @@ Observed value breakdown (for reference while building chart components):
 - Incidents per year: single digits until 2012, then roughly 8 → 13 → 24 → 41 → 50 → 46 → 45 → 91 → 80 → 109 → 179 → 308 → 457 (2012-2025), with 2026 partial so far. A clear growth story, worth leading the dashboard with.
 - `deployer` / `developer` are free text (1,265 / 711 distinct values) with real duplication risk (e.g. "Openai" appears standalone and combined with other tags). Needs a small alias/normalization step before ranking "top organizations."
 
-**Decision: `Risk Domain` is the primary "incident type" axis** for the dashboard. It has the best coverage of any categorical field, and the 7 categories are human-readable. `Risk Subdomain` is the drill-down layer under it. `Responsible Entity` and `Intent` are secondary cross-cuts, not top-level categories.
+**Decision:** `Risk Domain` **is the primary "incident type" axis** for the dashboard. It has the best coverage of any categorical field, and the 7 categories are human-readable. `Risk Subdomain` is the drill-down layer under it. `Responsible Entity` and `Intent` are secondary cross-cuts, not top-level categories.
 
 ## 3. Visualization catalog
 
@@ -51,12 +53,16 @@ Observed value breakdown (for reference while building chart components):
 8. **Browsable incident table**: filterable by Risk Domain, year, Responsible Entity, Intent; opens a detail view per incident.
 9. **Data transparency panel**: restates the workbook's own Coverage Map (how much of the data each taxonomy actually covers), so partial-coverage charts aren't misread as complete.
 
+
+
 ## 4. Tech stack
 
 - **React + Vite**, deployed to GitHub Pages via GitHub Actions (Pages source set to "GitHub Actions", not a branch, so no `gh-pages` branch is needed).
 - **ECharts** (via `echarts-for-react`) as the charting library: it natively supports the sunburst/treemap drill-down in item 3, plus bar/line/map types, without needing multiple libraries.
 - Plain JSON files as the data layer (no backend/database), see §5.
 - **xlsx** (SheetJS) for reading the workbook in `scripts/transform.mjs`. Installed from `https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`, not the `xlsx` npm registry package: the last registry release has two open high-severity advisories (prototype pollution, ReDoS) with no fix published to npm, while SheetJS's own CDN carries the patched build. Parse with `XLSX.read(buffer, {type: 'buffer'})` after reading the file with Node's `fs`, not `XLSX.readFile`: this build's Node/fs auto-detection does not work under native ESM and throws "Cannot access file" even when the file exists.
+
+
 
 ## 5. Data pipeline
 
@@ -80,8 +86,8 @@ Output committed to `data/`:
 
 ## 6. GitHub Actions workflows
 
-- **`update-data.yml`**: scheduled Tuesday 06:00 UTC (a day after AIID's "every Monday" refresh, as a buffer) plus manual `workflow_dispatch`. Runs the three scripts above, and if `git diff --quiet -- data` finds a change, commits it as `github-actions[bot]` and pushes to `main`.
-- **`deploy.yml`**: builds `web/` and publishes it to GitHub Pages. Triggered by `push` to `main` (ordinary code changes) and `workflow_dispatch`, and also declares `workflow_call` as a trigger.
+- `update-data.yml`: scheduled Tuesday 06:00 UTC (a day after AIID's "every Monday" refresh, as a buffer) plus manual `workflow_dispatch`. Runs the three scripts above, and if `git diff --quiet -- data` finds a change, commits it as `github-actions[bot]` and pushes to `main`.
+- `deploy.yml`: builds `web/` and publishes it to GitHub Pages. Triggered by `push` to `main` (ordinary code changes) and `workflow_dispatch`, and also declares `workflow_call` as a trigger.
 
 A push made with the repository's default `GITHUB_TOKEN` does not trigger other workflows (GitHub's loop-prevention rule), so `update-data.yml` committing to `main` would not, by itself, fire `deploy.yml`. Instead, after a successful data commit, `update-data.yml` calls `deploy.yml` directly as a reusable workflow (`uses: ./.github/workflows/deploy.yml`). This avoids needing a personal access token secret just to chain the two workflows.
 
@@ -102,7 +108,7 @@ data/
   meta.json
   whats-new.json
 web/                     React + Vite app, its own package.json
-  src/
+  src/ 
     components/          KpiStrip, TrendChart, RiskDomainChart, EntityIntentCharts,
                           TopOrgsChart, GeographyChart, WhatsNewFeed, IncidentTable
     lib/                 data loading + taxonomy color mapping
@@ -111,14 +117,19 @@ docs/
   plan.md                this file
 ```
 
+
+
 ## 8. Phased build order
 
 - **Phase 1 (MVP)**: data pipeline (done: fetch, transform, diff, weekly workflow), KPI strip, incidents-over-time chart, Risk Domain breakdown, What's New feed, basic incident table.
 - **Phase 2**: Risk Domain to Subdomain drill-down, Entity/Intent cross-tabs, top organizations (with name normalization), geography charts with explicit coverage caveats.
 - **Phase 3**: incident detail view, richer table filtering/search, data transparency panel, visual polish.
 
+
+
 ## 9. Open questions for later
 
 - Exact alias list for normalizing deployer/developer names (OpenAI, Google, Meta, etc.): build iteratively as duplicates are noticed.
 - Whether the country-level map is worth building at ~12% coverage, or whether the region bar chart alone is enough for v1.
 - `data/incidents.json` is currently about 2.1MB uncompressed. Fine for a single fetch-on-load today; revisit (e.g. split full descriptions out of the fields used for charts) if it keeps growing or load time becomes noticeable.
+
