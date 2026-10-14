@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import './App.css'
 import { CoveragePanel } from './components/CoveragePanel'
 import { DomainBreakdownChart } from './components/DomainBreakdownChart'
@@ -8,6 +9,8 @@ import { RiskDomainSection } from './components/RiskDomainSection'
 import { TopOrganizationsSection } from './components/TopOrganizationsSection'
 import { TrendChart } from './components/TrendChart'
 import { WhatsNewFeed } from './components/WhatsNewFeed'
+import { YearRangeFilter } from './components/YearRangeFilter'
+import { filterByYearRange } from './lib/aggregate'
 import { useAiidData } from './lib/useAiidData'
 
 const SECTIONS = [
@@ -24,6 +27,23 @@ const SECTIONS = [
 
 function App() {
   const { status, incidents, meta, whatsNew, error } = useAiidData()
+
+  const yearBounds = useMemo(() => {
+    if (!incidents) return null
+    const years = incidents.map((incident) => Number(incident.year)).filter((year) => !Number.isNaN(year))
+    return { min: Math.min(...years), max: Math.max(...years) }
+  }, [incidents])
+
+  const [yearRange, setYearRange] = useState(null)
+  const range = useMemo(
+    () => yearRange ?? (yearBounds ? { from: yearBounds.min, to: yearBounds.max } : null),
+    [yearRange, yearBounds],
+  )
+
+  const filteredIncidents = useMemo(() => {
+    if (!incidents || !range) return incidents
+    return filterByYearRange(incidents, range.from, range.to)
+  }, [incidents, range])
 
   return (
     <main className="app-shell">
@@ -50,17 +70,24 @@ function App() {
       {status === 'loading' && <p>Loading the latest snapshot...</p>}
       {status === 'error' && <p role="alert">Could not load incident data: {error.message}</p>}
 
-      {status === 'ready' && (
+      {status === 'ready' && yearBounds && (
         <>
-          <KpiStrip meta={meta} newCount={whatsNew.newIncidents.length} />
-          <TrendChart incidents={incidents} />
-          <RiskDomainSection incidents={incidents} coveragePct={meta.coverage.riskDomain} />
-          <DomainBreakdownChart incidents={incidents} />
-          <TopOrganizationsSection incidents={incidents} />
-          <GeographyChart incidents={incidents} coveragePct={meta.coverage.locationRegion} />
+          <YearRangeFilter
+            minYear={yearBounds.min}
+            maxYear={yearBounds.max}
+            from={range.from}
+            to={range.to}
+            onChange={setYearRange}
+          />
+          <KpiStrip meta={meta} filteredCount={filteredIncidents.length} newCount={whatsNew.newIncidents.length} />
+          <TrendChart incidents={filteredIncidents} />
+          <RiskDomainSection incidents={filteredIncidents} />
+          <DomainBreakdownChart incidents={filteredIncidents} />
+          <TopOrganizationsSection incidents={filteredIncidents} />
+          <GeographyChart incidents={filteredIncidents} />
           <WhatsNewFeed whatsNew={whatsNew} />
-          <IncidentTable incidents={incidents} />
-          <CoveragePanel meta={meta} />
+          <IncidentTable incidents={filteredIncidents} />
+          <CoveragePanel incidents={filteredIncidents} meta={meta} />
           <footer className="app-footer">
             Built from the{' '}
             <a href="https://incidentdatabase.ai" target="_blank" rel="noreferrer">

@@ -1,12 +1,13 @@
 import ReactECharts from 'echarts-for-react'
 import { useMemo } from 'react'
-import { countByRegion } from '../lib/aggregate'
+import { computeCoverage, countByRegion } from '../lib/aggregate'
 import { chartTheme } from '../lib/theme'
 import { useColorScheme } from '../lib/useColorScheme'
 
-export function GeographyChart({ incidents, coveragePct }) {
+export function GeographyChart({ incidents }) {
   const scheme = useColorScheme()
   const rows = useMemo(() => countByRegion(incidents), [incidents])
+  const coveragePct = useMemo(() => computeCoverage(incidents).locationRegion, [incidents])
 
   const option = useMemo(() => {
     const theme = chartTheme[scheme]
@@ -42,8 +43,8 @@ export function GeographyChart({ incidents, coveragePct }) {
     <section className="chart-card" id="geography">
       <h2>Incidents by region</h2>
       <p className="chart-note">
-        Location Region is recorded for {coveragePct}% of incidents. This shows only that tagged subset, not the
-        full database, so read it as a sample rather than a complete geographic picture. A country-level map was
+        Location Region is recorded for {coveragePct}% of incidents in the current selection. This shows only that
+        tagged subset, so read it as a sample rather than a complete geographic picture. A country-level map was
         considered and skipped for now: at this coverage it would mostly show gaps, not signal.
       </p>
       <ReactECharts option={option} style={{ height: Math.max(160, rows.length * 36) }} notMerge />
