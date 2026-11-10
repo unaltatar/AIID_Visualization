@@ -1,7 +1,131 @@
 {
-  "generatedAt": "2026-11-03T13:50:12.728Z",
-  "previousSnapshotDate": "2026-10-27T11:48:29.593Z",
-  "currentSnapshotDate": "2026-11-03T13:50:12.616Z",
-  "newIncidents": [],
-  "updatedIncidents": []
+  "generatedAt": "2026-11-10T14:32:32.336Z",
+  "previousSnapshotDate": "2026-11-03T13:50:12.616Z",
+  "currentSnapshotDate": "2026-11-10T14:32:32.238Z",
+  "newIncidents": [
+    {
+      "id": "1789",
+      "title": "Cybersecurity Firm Cathedral Reportedly Used AI Agents to Access Anthropic's Internal Business Systems",
+      "date": "2026-10-26 00:00:00",
+      "deployer": "Cathedral, Ai Agent System Deployers",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1790",
+      "title": "Purported AI Bots Flooded a UK Government Tobacco and Vaping Consultation with Reportedly Fraudulent Responses",
+      "date": "2024-01-29 00:00:00",
+      "deployer": "Information Manipulation Actors",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1791",
+      "title": "Dartmouth College Provost's Undisclosed AI-Assisted Writing Was Found to Have Breached Publication Policies",
+      "date": "2026-08-09 00:00:00",
+      "deployer": "Santiago Schnell, Academics, Chatbot Users",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1792",
+      "title": "A Johns Hopkins Bayview Hospital Employee in Baltimore Reportedly Uploaded Patient Data to an Unapproved AI Tool",
+      "date": "2026-09-21 00:00:00",
+      "deployer": "Johns Hopkins Bayview Medical Center, Healthcare Workers, Hospitals, Chatbot Users",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1793",
+      "title": "Purported Deepfake Videos Allegedly Impersonated a Former Student to Falsely Accuse Texas U.S. Senate Candidate James Talarico of Sexual Assault",
+      "date": "2026-10-20 00:00:00",
+      "deployer": "Storm 1516, Information Manipulation Actors, Deepfake Creators, Synthetic Media Creators, Information Manipulation Actors In Russia",
+      "riskDomain": null,
+      "reportCount": "2"
+    },
+    {
+      "id": "1794",
+      "title": "China-Linked Espionage Group VAPOR PANDA Reportedly Used ARTEX AI Agents to Breach Government and Corporate Systems Worldwide",
+      "date": "2026-10-17 00:00:00",
+      "deployer": "Vapor Panda, Threat Actors, Hackers, China Linked Threat Actors, Ai Agent System Deployers, Agentic Threat Actors",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1795",
+      "title": "Attacker Reportedly Used AI Agents to Breach Blockchain Analytics Firm Chainalysis and Access Customer Data",
+      "date": "2026-10-30 00:00:00",
+      "deployer": "Agentic Threat Actors, Threat Actors, Cybercriminals",
+      "riskDomain": null,
+      "reportCount": "2"
+    },
+    {
+      "id": "1796",
+      "title": "Attacker Reportedly Used AI Agents to Breach Healthcare Organizations and Steal Medical Records in Argentina",
+      "date": "2026-05-19 00:00:00",
+      "deployer": "Agentic Threat Actors, Threat Actors, Cybercriminals, Ai Agent System Deployers",
+      "riskDomain": null,
+      "reportCount": "2"
+    },
+    {
+      "id": "1797",
+      "title": "OpenAI AI Agents Reportedly Flooded RubyGems Software Registry With Malicious Packages",
+      "date": "2026-05-11 00:00:00",
+      "deployer": "Openai, Ai Agent System Deployers",
+      "riskDomain": null,
+      "reportCount": "6"
+    }
+  ],
+  "updatedIncidents": [
+    {
+      "id": "701",
+      "title": "American Asylum Seeker John Mark Dougan in Russia Reportedly Spreads Disinformation via AI Tools and Fake News Network",
+      "dateModified": "2026-10-31 21:13:32"
+    },
+    {
+      "id": "1171",
+      "title": "Reported Hack of Tea Dating App Compromises Data from Purportedly AI-Supported Identity and Image Checks",
+      "dateModified": "2026-10-31 21:10:39"
+    },
+    {
+      "id": "1186",
+      "title": "Reported Public Exposure of Over 100,000 LLM Conversations via Share Links Indexed by Search Engines and Archived",
+      "dateModified": "2026-10-31 21:11:12"
+    },
+    {
+      "id": "1710",
+      "title": "AI Agent Appearing to Originate from OpenAI Reportedly Attempted to Hack U.S. Department of Education Civil Rights Website",
+      "dateModified": "2026-10-31 21:11:46"
+    },
+    {
+      "id": "1714",
+      "title": "Z.ai's ZCode AI Coding Assistant Reportedly Uploaded Developers' Local Code Repositories to Alibaba Cloud Without Consent",
+      "dateModified": "2026-10-31 21:12:15"
+    },
+    {
+      "id": "1755",
+      "title": "Woman in Kyrgyzstan Alleged a Former Classmate Used an AI Bot to Create a Nude Image From Her Instagram Photo",
+      "dateModified": "2026-10-29 13:07:48"
+    },
+    {
+      "id": "1774",
+      "title": "AI Agents Under Evaluation Reportedly Accessed Personal and Confidential Records at Indian Organizations",
+      "dateModified": "2026-10-31 21:12:38"
+    },
+    {
+      "id": "1779",
+      "title": "OpenAI-Linked AI Agents May Have Contributed to a Partial Outage of the Wikimedia Foundation's Data Query Service",
+      "dateModified": "2026-10-31 21:14:38"
+    },
+    {
+      "id": "1781",
+      "title": "ARTEX AI Agents Reportedly Used Stolen Cloud Backup Credentials to Access ConnectWise Customers' Microsoft 365 Environments",
+      "dateModified": "2026-10-31 21:14:12"
+    },
+    {
+      "id": "1782",
+      "title": "Attackers Reportedly Used ARTEX, an AI Security-Testing Tool, to Steal Data from South Korean Financial Institutions",
+      "dateModified": "2026-10-31 21:12:58"
+    }
+  ]
 }
