@@ -1,17 +1,17 @@
 {
-  "totalIncidents": 1784,
+  "totalIncidents": 1801,
   "dateRange": {
     "min": "1983-09-26 00:00:00",
-    "max": "2026-10-30 00:00:00"
+    "max": "2026-11-05 00:00:00"
   },
-  "lastFetched": "2026-11-10T14:32:32.238Z",
-  "sourceFileName": "AIID_Excel_Export-20261102.xlsx",
+  "lastFetched": "2026-11-17T15:41:13.260Z",
+  "sourceFileName": "AIID_Excel_Export-20261109.xlsx",
   "coverage": {
-    "riskDomain": 83.9,
-    "responsibleEntity": 83.9,
-    "intent": 83.9,
-    "timing": 83.9,
-    "locationRegion": 11.2,
-    "autonomyLevel": 11.2
+    "riskDomain": 83.1,
+    "responsibleEntity": 83.1,
+    "intent": 83.1,
+    "timing": 83.1,
+    "locationRegion": 11.1,
+    "autonomyLevel": 11.1
   }
 }
