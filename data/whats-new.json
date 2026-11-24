@@ -1,225 +1,262 @@
 {
-  "generatedAt": "2026-11-17T15:41:13.342Z",
-  "previousSnapshotDate": "2026-11-10T14:32:32.238Z",
-  "currentSnapshotDate": "2026-11-17T15:41:13.260Z",
+  "generatedAt": "2026-11-24T17:11:51.784Z",
+  "previousSnapshotDate": "2026-11-17T15:41:13.260Z",
+  "currentSnapshotDate": "2026-11-24T17:11:51.675Z",
   "newIncidents": [
     {
-      "id": "1798",
-      "title": "Purported AI Impersonations of Executives Allegedly Helped Defraud Companies Worldwide of About $129 Million",
-      "date": "2024-10-08 00:00:00",
-      "deployer": "Voice Cloning Impersonation Scammers, Synthetic Media Creators, Scammers, Impersonation Scammers, Deepfake Creators, Cybercriminals, Alleged Dollar129 Million Executive Impersonation Fraud Ring, Guy Sheetrit, Sharon Hazan, Jacob Soall",
+      "id": "1815",
+      "title": "Attacker Reportedly Used BOSSAI AI Agents to Extract Emergency Dispatch Records in Taipei, Taiwan",
+      "date": "2026-11-04 00:00:00",
+      "deployer": "Cybercriminals, Hackers, Ai Agent System Deployers",
+      "riskDomain": null,
+      "reportCount": "2"
+    },
+    {
+      "id": "1816",
+      "title": "Kentucky Police Detective Allegedly Relied on False AI Facial Recognition Match, Leading to Nebraska Man's Arrest and Detention",
+      "date": "2025-01-09 00:00:00",
+      "deployer": "Ryan Kilmer, Police Departments In The United States, Police Departments, Law Enforcement, Florence Police Department (Kentucky)",
       "riskDomain": null,
       "reportCount": "3"
     },
     {
-      "id": "1799",
-      "title": "OpenAI AI Agents Reportedly Posted ChatGPT User Images to External Hosts in 53 Instances",
-      "date": "2026-09-25 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
-      "riskDomain": null,
-      "reportCount": "3"
-    },
-    {
-      "id": "1800",
-      "title": "OpenAI-Linked AI Agents Reportedly Repurposed Vanderbilt University's Restricted Link Shortener",
-      "date": "2026-06-18 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
-      "riskDomain": null,
-      "reportCount": "1"
-    },
-    {
-      "id": "1801",
-      "title": "Apparently AI-Assisted Conviction Draft Compromised a Defendant's Fair-Trial Rights in Cali, Colombia",
-      "date": "2025-09-19 00:00:00",
-      "deployer": "Juzgado 7.O Penal Del Circuito De Cali, Courts, Chatbot Users",
+      "id": "1817",
+      "title": "Hackers Reportedly Used Internal AI Tool in $6.34 Billion Breach of Cryptocurrency Exchange Binance",
+      "date": "2026-10-29 00:00:00",
+      "deployer": "North Korean Threat Actors, Threat Actors, Cybercriminals, Hackers, Government Of North Korea, Ai Agent System Deployers",
       "riskDomain": null,
       "reportCount": "4"
     },
     {
-      "id": "1802",
-      "title": "OpenAI Research Agent Reportedly Exposed a Researcher's GitHub Token in a Public Code Repository",
-      "date": "2026-05-27 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
+      "id": "1818",
+      "title": "ChatGPT Allegedly Advised Danish Tenant to Withhold Rent and Reinforced False Business Claims Before His Eviction in Vordingborg, Denmark",
+      "date": "2026-06-02 00:00:00",
+      "deployer": "Openai, Chatbot Users, Klaus Elmfelt Aerenlund",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "4"
     },
     {
-      "id": "1803",
-      "title": "OpenAI Research Agent Reportedly Compromised an Internal Chip-Design Server During an Evaluation",
-      "date": "2026-03-27 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
+      "id": "1819",
+      "title": "Purportedly AI-Altered Video Reportedly Falsely Portrayed a Slovenian Surgeon Endorsing Detoxil Water, a Supposed Parasite Remedy",
+      "date": "2026-04-17 00:00:00",
+      "deployer": "Scammers, Impersonation Scammers, Synthetic Media Creators, Deepfake Creators",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "5"
     },
     {
-      "id": "1804",
-      "title": "OpenAI Training Agent Reportedly Used an API Key Found on GitHub to Access a Data Service",
-      "date": "2026-05-15 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
+      "id": "1820",
+      "title": "AI-Assisted Promotional Images for Panama City Snow Attraction Allegedly Misled Ticket Buyers Before Deceptive-Advertising Fine",
+      "date": "2025-12-23 00:00:00",
+      "deployer": "Synthetic Media Creators, Snowland Panama Organizers, Event Organizers, Bar Y Discoteca Una Flor, Advertisers",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "3"
     },
     {
-      "id": "1805",
-      "title": "Tencent-Linked AI Agents Reportedly Used Exposed Credentials to Retrieve Data From Alibaba's Mapping Service",
-      "date": "2026-10-04 00:00:00",
-      "deployer": "Tencent, Ai Evaluation Organizations, Ai Agent System Deployers",
+      "id": "1821",
+      "title": "Students at Guatemala City School Allegedly Created and Shared AI-Generated Nude Images of Female Classmates",
+      "date": "2024-08-09 00:00:00",
+      "deployer": "Synthetic Media Creators, Students, Minors, Men And Boys, Deepfake Creators, Boys, Adolescents, Adolescent Boys",
+      "riskDomain": null,
+      "reportCount": "4"
+    },
+    {
+      "id": "1822",
+      "title": "Paraguay Convenience Store Customer Reportedly Accused of Theft and Denied Service After Facial Recognition False Match",
+      "date": "2025-03-02 00:00:00",
+      "deployer": "Facial Recognition System Deployers, Businesses Using Biometrics, Biggie Express",
       "riskDomain": null,
       "reportCount": "2"
     },
     {
-      "id": "1806",
-      "title": "OpenAI Training Agent Reportedly Retrieved Credentials and Restricted Data from a Government Statistics Website",
-      "date": "2026-06-17 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
+      "id": "1823",
+      "title": "Weill Cornell Medicine Radiology Research in New York City Reportedly Used Patient Data in AI Tools Without Authorization",
+      "date": "2026-06-10 00:00:00",
+      "deployer": "Weill Cornell Medicine, Research Institutions, Researchers, Healthcare Organizations",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "4"
     },
     {
-      "id": "1807",
-      "title": "OpenAI Agent Reportedly Used a Wallet Without Permission to Pay Ethereum Test-Network Fees",
-      "date": "2026-06-26 00:00:00",
-      "deployer": "Openai, Ai Agent System Deployers",
+      "id": "1824",
+      "title": "Taiwanese Romance Scam Ring Allegedly Used AI Voice-Changing Software to Defraud More Than 20,000 People",
+      "date": "2026-09-02 00:00:00",
+      "deployer": "Scammers, Cybercriminals, Romance Scammers, Impersonation Scammers, Scammers In Taiwan, Cybercriminals In Taiwan, Synthetic Media Creators, Deepfake Creators, Voice Cloning Impersonation Scammers, Taiwanese Romance Scam Ring Led By Huang And Hsu",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "4"
     },
     {
-      "id": "1808",
-      "title": "Defense Contractor's Personal AI Coding Agent Reportedly Sent U.S. Defense Department Credentials to a Third-party Website",
+      "id": "1825",
+      "title": "Autonomous a2z ROii Bus Struck Roadside Stone Wall During Passenger Trial in Toyooka, Japan",
+      "date": "2026-11-09 00:00:00",
+      "deployer": "Toyooka City, Zentan Bus Co. Ltd., Automated Driving System Deployers, Autonomous Vehicle Fleet Operators",
+      "riskDomain": null,
+      "reportCount": "5"
+    },
+    {
+      "id": "1826",
+      "title": "Rhode Island Youth Athletics Instructor Allegedly Used AI to Create Sexual Abuse Imagery of Children",
+      "date": "2026-04-15 00:00:00",
+      "deployer": "Synthetic Media Creators, Joseph L. Mello Iii, Deepfake Creators, Ai Generated Csam Creators",
+      "riskDomain": null,
+      "reportCount": "3"
+    },
+    {
+      "id": "1827",
+      "title": "Autonomous Haul Truck Reportedly Went Down an Embankment After Communications Loss at Copper Mine in Antofagasta, Chile",
+      "date": "2026-11-12 00:00:00",
+      "deployer": "Minera Centinela, Autonomous Vehicle Fleet Operators, Antofagasta Minerals",
+      "riskDomain": null,
+      "reportCount": "3"
+    },
+    {
+      "id": "1828",
+      "title": "AI Agents Operated by Safety-Testing Firm Trajectory Labs Attempted Website Exploits and Impersonated Staff at AI Research Organization Epoch AI",
+      "date": "2026-10-20 00:00:00",
+      "deployer": "Trajectory Labs, Ai Agent System Deployers, Ai Evaluation Organizations",
+      "riskDomain": null,
+      "reportCount": "6"
+    },
+    {
+      "id": "1829",
+      "title": "Arizona Court Releases DUI Suspect After AI-Assisted Police Report Raises Probable-Cause Questions",
       "date": "2026-10-29 00:00:00",
-      "deployer": "Federal Contractors, Employees, Ai Agent System Deployers, Accenture Employees, Accenture",
+      "deployer": "Arizona Department Of Public Safety, Law Enforcement, Police Departments, Police Departments In The United States, Police Officers",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "3"
     },
     {
-      "id": "1809",
-      "title": "Scotland's Education Agency Published Purportedly AI-Edited School Curriculum Papers with Apparently Nonexistent References",
+      "id": "1830",
+      "title": "Purportedly AI-Generated Impersonation of Actor Ioan Gruffudd Allegedly Convinced a Fan They Had a Romantic Relationship",
+      "date": "2026-11-08 00:00:00",
+      "deployer": "Synthetic Media Creators, Scammers, Impersonation Scammers, Deepfake Creators, Cybercriminals, Catfishers",
+      "riskDomain": null,
+      "reportCount": "3"
+    },
+    {
+      "id": "1831",
+      "title": "Bus Passengers Reportedly Injured After Starship Delivery Robot Entered a Crossing Against a Red Light in Tallinn, Estonia",
+      "date": "2026-10-26 00:00:00",
+      "deployer": "Starship Technologies, Autonomous Mobile Robot Operators, Delivery Robot Operators",
+      "riskDomain": null,
+      "reportCount": "5"
+    },
+    {
+      "id": "1832",
+      "title": "Autonomous Shuttle Operated by Grab Reportedly Nearly Struck a Schoolgirl at a Crossing in Punggol, Singapore",
       "date": "2026-11-05 00:00:00",
-      "deployer": "Education Scotland, Governments, Government Agencies, Government Of The United Kingdom, Government Of Scotland",
+      "deployer": "Grab, Autonomous Vehicle Fleet Operators, Automated Driving System Deployers",
       "riskDomain": null,
-      "reportCount": "1"
+      "reportCount": "4"
     },
     {
-      "id": "1810",
-      "title": "ARTEX Security Testing Agent Reportedly Accessed WorkOS's Internal Sales Tool Without Authorization and Retrieved Customer Data",
-      "date": "2026-10-25 00:00:00",
-      "deployer": "Security Researcher Whose Artex Agent Accessed Workos, Security Researchers, Ai Researchers, Ai Agent System Deployers",
+      "id": "1833",
+      "title": "Pennsylvania Health System Allegedly Recorded Patient Visits with Abridge AI Scribe Without Informed Consent",
+      "date": "2024-10-29 00:00:00",
+      "deployer": "Allegheny Health Network, Healthcare Institutions, Highmark Health, Medical Personnel",
       "riskDomain": null,
       "reportCount": "2"
     },
     {
-      "id": "1811",
-      "title": "San Diego, California, Police Reportedly Relied on a Flock License Plate Reader Image in Mistaken Arrests",
-      "date": "2025-11-26 00:00:00",
-      "deployer": "San Diego Police Department (California), Police Departments In The United States, Police Departments, Law Enforcement, City Of San Diego",
+      "id": "1834",
+      "title": "UK Domain Registrar 123 Reg Reported Customer Data Exposure in Cyberattack Involving ARTEX AI Tool",
+      "date": "2026-09-18 00:00:00",
+      "deployer": "Threat Actors, Hackers, Cybercriminals, Agentic Threat Actors, Ai Agent System Deployers",
+      "riskDomain": null,
+      "reportCount": "3"
+    },
+    {
+      "id": "1835",
+      "title": "Driverless Waymo Taxis Reportedly Stalled and Blocked Traffic on Flooded Streets in San Francisco",
+      "date": "2026-11-18 00:00:00",
+      "deployer": "Waymo, Robotaxi Operators",
+      "riskDomain": null,
+      "reportCount": "3"
+    },
+    {
+      "id": "1836",
+      "title": "U.S. National Security Agency's Classified Network Disrupted During Patching Reportedly Prompted by AI-Assisted Security Research",
+      "date": "2026-11-17 00:00:00",
+      "deployer": "Wiz, Security Researchers, Cybersecurity Firms, Calif",
+      "riskDomain": null,
+      "reportCount": "14"
+    },
+    {
+      "id": "1837",
+      "title": "Google Search AI Mode Reportedly Attributed Another Person's Criminal Conviction to a German Physician",
+      "date": "2026-08-28 00:00:00",
+      "deployer": "Google",
       "riskDomain": null,
       "reportCount": "1"
     },
     {
-      "id": "1812",
-      "title": "Google's Gemini Chatbot on a School-Issued Laptop Allegedly Helped a North Carolina Student Plan Suicide",
-      "date": "2026-03-17 00:00:00",
-      "deployer": "Google, Alphabet, Chatbot Users",
+      "id": "1838",
+      "title": "Google AI Overviews Alleged to Have Falsely Linked Two German Publishers to Fraud Schemes",
+      "date": "2026-01-20 00:00:00",
+      "deployer": "Google",
       "riskDomain": null,
-      "reportCount": "3"
+      "reportCount": "1"
     },
     {
-      "id": "1813",
-      "title": "Five Reportedly Fictitious Citations Suspected of Being AI-Generated Led to a Costs Order in a London Housing Case",
-      "date": "2025-06-06 00:00:00",
-      "deployer": "Sarah Forey, Lawyers, Legal Professionals",
+      "id": "1839",
+      "title": "Berlin Appeals Court Reportedly Had to Check Suspect Citations in Apparently AI-Assisted Family Law Filings",
+      "date": "2025-11-20 00:00:00",
+      "deployer": "Legal Professionals, Lawyers",
       "riskDomain": null,
-      "reportCount": "3"
+      "reportCount": "1"
     },
     {
-      "id": "1814",
-      "title": "ChatGPT Allegedly Guided a Woman in Seattle, Washington, Through a Seizure Medication Taper Before Her Death",
-      "date": "2026-02-12 00:00:00",
-      "deployer": "Openai, Chatbot Users",
+      "id": "1840",
+      "title": "German Family Court Reportedly Had to Check False Citations in a Filing with Apparently AI-Generated Legal Claims",
+      "date": "2025-06-30 00:00:00",
+      "deployer": "Lawyers, Legal Professionals",
       "riskDomain": null,
-      "reportCount": "2"
+      "reportCount": "1"
+    },
+    {
+      "id": "1841",
+      "title": "Grok Chatbot Reportedly Posted a False Claim on X That German Advocacy Group Campact Received Substantial Federal Funding",
+      "date": "2025-08-06 00:00:00",
+      "deployer": "Xai, X (Twitter) Users",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1842",
+      "title": "Swiss Mobile Brand Gomo's Chatbot Reportedly Gave Wrong Roaming Advice Before a Teenager Received an Unexpected Bill",
+      "date": "2025-05-26 00:00:00",
+      "deployer": "Salt Mobile, Gomo, Telecommunications Providers, Chatbot Users",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1843",
+      "title": "Retiree in Germany Reportedly Lost at Least €150,000 in Investment Scam Involving a Purported AI Imitation of Economist Hans-Werner Sinn's Voice",
+      "date": "2026-06-01 00:00:00",
+      "deployer": "Scammers Impersonating Hans Werner Sinn, Investment Scam Operators, Scammers, Cybercriminals, Synthetic Media Creators, Deepfake Creators, Voice Cloning Impersonation Scammers",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1844",
+      "title": "German Financial Firm Reportedly Gave Inadequate Explanations for Automated Credit Card Denials",
+      "date": "2025-09-30 00:00:00",
+      "deployer": "Financial Institutions, Credit Card Issuers, Unnamed Financial Firm In Hamburg'S 2025 Credit Card Case",
+      "riskDomain": null,
+      "reportCount": "1"
+    },
+    {
+      "id": "1845",
+      "title": "Valencian International University Reportedly Required AI Facial Recognition for Online Exams in Spain Without a Viable Alternative",
+      "date": "2022-12-19 00:00:00",
+      "deployer": "Universitat Internacional Valenciana, Valencian International University, Universities, Facial Recognition System Deployers",
+      "riskDomain": null,
+      "reportCount": "1"
     }
   ],
   "updatedIncidents": [
     {
-      "id": "186",
-      "title": "Algorithm Assessing Risk Faced by Victims of Gender Violence Misclassified Low-Risk Cases, Allegedly Leading to Homicide of Women and Children in Spain",
-      "dateModified": "2026-11-09 01:39:00"
-    },
-    {
-      "id": "195",
-      "title": "Predictive Policing Program by Florida Sheriff’s Office Allegedly Violated Residents’ Rights and Targeted Children of Vulnerable Groups",
-      "dateModified": "2026-11-09 01:38:35"
-    },
-    {
-      "id": "747",
-      "title": "Fatalities Reportedly Occur Despite VioGén Algorithm's Low or Negligible Risk Scores",
-      "dateModified": "2026-11-09 01:37:57"
-    },
-    {
-      "id": "1379",
-      "title": "Florida Woman Reportedly Jailed After Ex-Boyfriend Allegedly Submitted AI-Fabricated Text Screenshot as Bond-Violation Evidence",
-      "dateModified": "2026-11-09 02:05:23"
-    },
-    {
-      "id": "1450",
-      "title": "Florida Man Allegedly Used Purported Deepfake Video to Report Break-In of Deputy's Patrol Vehicle in Lake Mary",
-      "dateModified": "2026-11-09 02:01:41"
-    },
-    {
-      "id": "1479",
-      "title": "ChatGPT-Generated Image of Nonexistent 'Homeless Man' Was Used in False St. Petersburg, Florida Burglary and Sexual Battery Reports",
-      "dateModified": "2026-11-09 01:49:15"
-    },
-    {
-      "id": "1484",
-      "title": "Purportedly AI-Generated Image Reportedly Misled Daejeon Authorities Searching for Escaped Wolf Neukgu",
-      "dateModified": "2026-11-09 01:48:08"
-    },
-    {
-      "id": "1490",
-      "title": "ChatGPT Was Allegedly Consulted About Attack Options Before Teen Attempted to Stab Officer at Tira, Israel, Police Station",
-      "dateModified": "2026-11-09 01:46:54"
-    },
-    {
-      "id": "1557",
-      "title": "Former New York City Council Candidate Jonathan Rinaldi Allegedly Used AI to Create False Endorsements and Fabricated News Reports",
-      "dateModified": "2026-11-09 01:43:20"
-    },
-    {
-      "id": "1611",
-      "title": "Marrero, Louisiana, Woman Allegedly Created Purportedly AI-Generated Nude Media During Extortion Scheme",
-      "dateModified": "2026-11-09 01:43:05"
-    },
-    {
-      "id": "1692",
-      "title": "Parkview High School in Georgia Reportedly Received Series of Purportedly AI-Generated Bomb Threats That Prompted Repeated Lockdowns",
-      "dateModified": "2026-11-09 01:42:49"
-    },
-    {
-      "id": "1744",
-      "title": "Allegedly AI-Generated Audio Bomb Threat Prompted Evacuations at the Port of Constanța, Romania",
-      "dateModified": "2026-11-09 01:42:25"
-    },
-    {
-      "id": "1745",
-      "title": "Purportedly AI-Generated Bomb Threat Calls Prompted School Closures and an Evacuation in Jackson and Hall Counties, Georgia",
-      "dateModified": "2026-11-09 01:42:08"
-    },
-    {
-      "id": "1746",
-      "title": "Repeated Bomb Threat Calls, Some Reportedly AI-Generated, Disrupted Schools in Wheatland, California",
-      "dateModified": "2026-11-09 01:41:52"
-    },
-    {
-      "id": "1759",
-      "title": "Purportedly AI-Generated Video Depicting a Police Officer Punching a Person Was Reportedly Shared as Footage from French Student Protests",
-      "dateModified": "2026-11-09 01:41:27"
-    },
-    {
-      "id": "1797",
-      "title": "OpenAI AI Agents Reportedly Flooded RubyGems Software Registry with Malicious Packages",
-      "dateModified": "2026-11-07 19:04:14"
+      "id": "896",
+      "title": "Alleged Misuse of Facial Recognition Technology by Law Enforcement Reportedly Leading to Wrongful Arrests and Violations of Investigative Standards",
+      "dateModified": "2026-11-12 22:27:42"
     }
   ]
 }
